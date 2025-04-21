@@ -9,6 +9,9 @@ const schema = z.object({
   sexo: z.enum(['masculino', 'feminino']),
   percurso: z.enum(['6km', '12km']),
   dataNascimento: z.string().min(1, 'Informe a data de nascimento'),
+  email: z.string().email('Informe um email válido'),
+  telefone: z.string().min(10, 'Informe um telefone válido'),
+  cpf: z.string().min(11, 'Informe um CPF válido').max(14, 'Informe um CPF válido'), // CPF com validação de tamanho
 })
 
 // Configure a conexão com o banco de dados usando variáveis de ambiente
@@ -29,15 +32,18 @@ export async function POST(request: Request) {
 
     // Insira os dados no banco de dados
     const query = `
-      INSERT INTO cadastros (nomeCompleto, nomeSocial, sexo, percurso, dataNascimento)
-      VALUES (?, ?, ?, ?, ?)
+      INSERT INTO cadastros (nomeCompleto, nomeSocial, cpf, sexo, percurso, dataNascimento, email, telefone)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `
     const values = [
       parsedData.nomeCompleto,
       parsedData.nomeSocial || null,
+      parsedData.cpf || null,
       parsedData.sexo,
       parsedData.percurso,
       parsedData.dataNascimento,
+      parsedData.email,
+      parsedData.telefone,
     ]
 
     await connection.execute(query, values)
