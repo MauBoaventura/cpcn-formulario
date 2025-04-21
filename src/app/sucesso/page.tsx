@@ -1,12 +1,16 @@
+import Image from "next/image";
+
 export default function Sucesso() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-green-50 p-4">
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-100 to-green-50 p-4">
       <div className="bg-white p-6 md:p-10 rounded-2xl shadow-xl w-full max-w-xl text-center space-y-6">
         <div className="flex justify-center">
-          <img
+          <Image
             src="/logo-cpcn.png"
             alt="Logo do Circuito de Corrida"
             className="h-32 w-auto"
+            width={128}
+            height={128}
           />
         </div>
         <h1 className="text-2xl font-bold text-green-800">

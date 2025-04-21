@@ -5,6 +5,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
 import { useState } from 'react'
+import Image from 'next/image'
 
 const schema = z.object({
   nomeCompleto: z.string().min(3, 'Informe o nome completo'),
@@ -48,7 +49,7 @@ export default function Home() {
         }
         return response.json()
       })
-      .then((data) => {
+      .then(() => {
         window.location.href = '/sucesso'
       })
       .catch((error) => {
@@ -58,17 +59,19 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-green-50 p-4">
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-100 to-green-50 p-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-6 md:p-10 rounded-2xl shadow-xl w-full max-w-xl space-y-6"
       >
         {/* Adicionando a logo */}
         <div className="flex justify-center">
-          <img
+          <Image
             src="/logo-cpcn.png"
             alt="Logo do Circuito de Corrida"
             className="h-32 w-auto"
+            width={128}
+            height={128}
           />
         </div>
 
@@ -102,7 +105,7 @@ export default function Home() {
               Utilizar nome social
             </span>
           </label>
-          
+
           {mostrarNomeSocial && (
             <div className="mt-2">
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -129,7 +132,7 @@ export default function Home() {
             onChange={(e) => {
               let raw = e.target.value.replace(/\D/g, '')
               if (raw.length > 11) raw = raw.slice(0, 11)
-            
+
               let formatted = raw
               if (raw.length > 10) {
                 formatted = raw.replace(/^(\d{2})(\d{1})(\d{4})(\d{4})$/, '($1) $2 $3-$4')
@@ -140,10 +143,10 @@ export default function Home() {
               } else {
                 formatted = raw.replace(/^(\d*)$/, '($1')
               }
-            
+
               setValue('telefone', formatted, { shouldValidate: true })
             }}
-            
+
           />
           {errors.telefone && (
             <p className="text-sm text-red-500 mt-1">{errors.telefone.message}</p>
@@ -177,7 +180,7 @@ export default function Home() {
             onChange={(e) => {
               let rawValue = e.target.value.replace(/\D/g, '')
               if (rawValue.length > 11) rawValue = rawValue.slice(0, 11)
-            
+
               let formatted = rawValue
               if (formatted.length > 9) {
                 formatted = formatted.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
@@ -186,10 +189,10 @@ export default function Home() {
               } else if (formatted.length > 3) {
                 formatted = formatted.replace(/(\d{3})(\d{0,3})/, '$1.$2')
               }
-            
+
               setValue('cpf', formatted, { shouldValidate: true })
             }}
-            
+
           />
           {errors.cpf && (
             <p className="text-sm text-red-500 mt-1">{errors.cpf.message}</p>
