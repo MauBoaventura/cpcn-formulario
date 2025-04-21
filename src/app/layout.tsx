@@ -14,8 +14,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cadastro de Corredores - Circuito de Corrida",
-  description: "Formulário de cadastro para participantes do Circuito Piauiense de Corrida na Natureza.",
+  title: "Cadastro de Corredores - Circuito Piauiense de Corridas na Natureza",
+  description: "Formulário de cadastro para participantes do Circuito Piauiense de Corridas na Natureza.",
+  openGraph: {
+    title: "Cadastro de Corredores - Circuito Piauiense de Corridas na Natureza",
+    description: "Formulário de cadastro para participantes do Circuito Piauiense de Corridas na Natureza.",
+    url: "https://cadastro-cpcn.mauboa.com.br", // Substitua pelo seu URL real
+    siteName: "Circuito Piauiense de Corridas na Natureza",
+    images: [
+      {
+        url: "/logo-cpcn.png", // Caminho relativo à pasta public
+        width: 800,
+        height: 600,
+        alt: "Logo do Circuito Piauiense de Corridas na Natureza",
+      },
+    ],
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cadastro de Corredores - Circuito Piauiense de Corridas na Natureza",
+    description: "Formulário de cadastro para participantes do Circuito Piauiense de Corridas na Natureza.",
+    images: ["/logo-cpcn.png"], // Caminho relativo à pasta public
+  },
 };
 
 export default function RootLayout({

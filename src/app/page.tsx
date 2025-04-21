@@ -11,7 +11,7 @@ const schema = z.object({
   nomeCompleto: z.string().min(3, 'Informe o nome completo'),
   nomeSocial: z.string().optional(),
   sexo: z.enum(['masculino', 'feminino']),
-  percurso: z.enum(['6km', '12km'],),
+  percurso: z.enum(['7.5km', '15km'],),
   dataNascimento: z.string().min(1, 'Informe a data de nascimento'),
   telefone: z
     .string()
@@ -226,8 +226,8 @@ export default function Home() {
             )}
           >
             <option value="">Selecione...</option>
-            <option value="6km">6km</option>
-            <option value="12km">12km</option>
+            <option value="7.5Km">7.5Km</option>
+            <option value="15km">15km</option>
           </select>
           {errors.percurso && (
             <p className="text-sm text-red-500 mt-1">Selecione um percurso </p>

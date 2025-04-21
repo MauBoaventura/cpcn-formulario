@@ -7,7 +7,7 @@ const schema = z.object({
   nomeCompleto: z.string().min(3, 'Informe o nome completo'),
   nomeSocial: z.string().optional(),
   sexo: z.enum(['masculino', 'feminino']),
-  percurso: z.enum(['6km', '12km']),
+  percurso: z.enum(['7.5km', '15km']),
   dataNascimento: z.string().min(1, 'Informe a data de nascimento'),
   email: z.string().email('Informe um email válido'),
   telefone: z.string().min(10, 'Informe um telefone válido'),
